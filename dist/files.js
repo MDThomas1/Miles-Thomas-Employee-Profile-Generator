@@ -8,8 +8,8 @@ function generateHTML() {
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
       <title>Document</title>
     </head>
-    <body>
-      <header class="text-center">
+    <body class="bg-light">
+      <header class="text-center bg-info">
         <h1>My Team<h1>
       </header>
       <div class="container">
