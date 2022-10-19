@@ -14,7 +14,7 @@ function companyCreation() {
         {
             type: 'input',
             name: 'companyName',
-            message: 'what is the name of your company?'
+            message: 'What is the name of your company?'
         }
     ])
 
