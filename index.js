@@ -3,10 +3,10 @@ const inquirer = require('inquirer')
 const fs = require('fs')
 
 // Allows utilisation of the pages within the lib folder
-//const employee = require('./lib/employee')
-const manager = require('./lib/manager')
-const engineer = require('./lib/engineer')
-const intern = require('./lib/intern')
+const Employee = require('./lib/employee')
+const Manager = require('./lib/manager')
+const Engineer = require('./lib/engineer')
+const Intern = require('./lib/intern')
 
 function companyCreation() {
     inquirer
@@ -18,7 +18,7 @@ function companyCreation() {
         }
     ])
 
-    .then(createManager())
+    .then(Manager.createManager())
 
     .then(inquirer
         .prompt([
@@ -26,9 +26,22 @@ function companyCreation() {
                 type: 'list',
                 name: 'employeeGeneration',
                 message: 'What would you like to do next?',
-                choices: ['Create an engineer profile', new inquirer.Separator(), 'Create an intern profile', new inquirer.Separator(), 'Generate my HTML page', new inquirer.Separator()]
+                choices: [
+                    { name: 'Create an engineer profile', value: 0 }, new inquirer.Separator(), 
+                    {name: 'Create an intern profile', value: 1}, new inquirer.Separator(), 
+                    {name: 'Generate my HTML page', value: 2}, new inquirer.Separator()
+                ]
             }
         ]))
+        .then((responses) => {
+            if (responses.employeeGeneration === 0) {
+                Engineer.createEngineer()
+            } else if (responses.employeeGeneration === 1) {
+                Intern.createIntern()
+            } else {
+                producePage()
+            }
+        })
 }
 
 companyCreation()
