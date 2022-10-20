@@ -12,7 +12,7 @@ function generateHTML() {
         <h1>My Team<h1>
       </header>
       <div class="container">
-        <div class="row" id="employeeCards">
+        <div class="row">
         </div>
       </div>
     </body>

@@ -7,7 +7,6 @@ const Employee = require('./lib/employee')
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
-const HTMLFile = require('./dist/files')
 const generateHTML = require('./dist/files')
 
 const teamArray = []
@@ -39,7 +38,7 @@ function companyCreation() {
             {
                 type: 'input',
                 name: 'officeNumber',
-                message: "What is the employee's office number?"
+                message: "What is the manager's office number?"
             }
         ])
         .then((answers) => {
@@ -155,35 +154,10 @@ function producePage() {
     // The function creating the new HTML page
     fs.writeFileSync('profile.html', generateHTML(), (err) => 
     err ? console.error('HTML file creation has been unsuccessful') : console.log('Your HTML file has successfully been created'))
-
+    
     // Writing cards in the HTML for employee profiles
-    for(let i = 0; i < teamArray.length; i++) {
-        let employeeCard = document.createElement('div')
-        employeeCard.classList.add('card col-4 bg-primary text-white')
-        let memberName = document.createElement('h4')
-        memberName.textContent = teamArray[i].employeeName
-        employeeCard.append(memberName)
-        let memberRole = document.createElement('h4')
-        memberRole.textContent = teamArray[i].role
-        employeeCard.append(memberRole)
-        let memberID = document.createElement('p')
-        memberID.textContent = 'ID: ' + teamArray[i].id
-        employeeCard.append(memberID)
-        let memberEmail = document.createElement('p')
-        memberEmail.textContent = 'Email: ' + teamArray[i].email
-        employeeCard.append(memberID)
-        let roleSpecific = document.createElement('p')
-        if (teamArray[i].officeNumber) {
-            roleSpecific.textContent = 'Office Number: ' + teamArray[i].officeNumber
-        } else if (teamArray[i].github) {
-            roleSpecific.textContent = 'Github: https://github.com/' + teamArray[i].github
-        } else if (teamArray[i].school) {
-            roleSpecific.textContent = 'School: ' + teamArray[i].school
-        }
-        employeeCard.append(roleSpecific)
-        document.querySelector('#employeeCards').append(employeeCard)
-        
-    }
 }
+
+
 
 companyCreation()
