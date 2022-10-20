@@ -1,7 +1,6 @@
 // HTML file template
 function generateHTML() {
     return `<!DOCTYPE html>
-    <html lang="en">
     <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -17,7 +16,7 @@ function generateHTML() {
         </div>
       </div>
     </body>
-    </html>`;
+    <script src=./index.js>`;
     
 }
 

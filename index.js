@@ -153,27 +153,26 @@ function companyCreation() {
 }
 function producePage() {
     // The function creating the new HTML page
-    const fileTemplate = generateHTML()
-    fs.writeFile('profile.html', fileTemplate, (err) => 
+    fs.writeFileSync('profile.html', generateHTML(), (err) => 
     err ? console.error('HTML file creation has been unsuccessful') : console.log('Your HTML file has successfully been created'))
 
     // Writing cards in the HTML for employee profiles
     for(let i = 0; i < teamArray.length; i++) {
-        let employeeCard = fileTemplate.createElement('div')
+        let employeeCard = document.createElement('div')
         employeeCard.classList.add('card col-4 bg-primary text-white')
-        let memberName = fileTemplate.createElement('h4')
+        let memberName = document.createElement('h4')
         memberName.textContent = teamArray[i].employeeName
         employeeCard.append(memberName)
-        let memberRole = fileTemplate.createElement('h4')
+        let memberRole = document.createElement('h4')
         memberRole.textContent = teamArray[i].role
         employeeCard.append(memberRole)
-        let memberID = fileTemplate.createElement('p')
+        let memberID = document.createElement('p')
         memberID.textContent = 'ID: ' + teamArray[i].id
         employeeCard.append(memberID)
-        let memberEmail = fileTemplate.createElement('p')
+        let memberEmail = document.createElement('p')
         memberEmail.textContent = 'Email: ' + teamArray[i].email
         employeeCard.append(memberID)
-        let roleSpecific = fileTemplate.createElement('p')
+        let roleSpecific = document.createElement('p')
         if (teamArray[i].officeNumber) {
             roleSpecific.textContent = 'Office Number: ' + teamArray[i].officeNumber
         } else if (teamArray[i].github) {
@@ -182,7 +181,7 @@ function producePage() {
             roleSpecific.textContent = 'School: ' + teamArray[i].school
         }
         employeeCard.append(roleSpecific)
-        fileTemplate.querySelector('#employeeCards').append(employeeCard)
+        document.querySelector('#employeeCards').append(employeeCard)
         
     }
 }
