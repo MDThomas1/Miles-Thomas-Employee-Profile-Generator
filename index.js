@@ -8,6 +8,7 @@ const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
 const HTMLFile = require('./dist/files')
+const generateHTML = require('./dist/files')
 
 const teamArray = []
 
