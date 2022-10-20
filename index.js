@@ -12,6 +12,10 @@ const HTMLFile = require('./dist/files')
 const teamArray = []
 
 function companyCreation() {
+
+    // Clears the team array at the start of the function
+    teamArray = []
+
     function createManager() {
         // The prompts used to create a manager
         inquirer
@@ -42,7 +46,8 @@ function companyCreation() {
         ])
         .then((answers) => {
             const newManager = new Manager(`${answers.managerName}`, `${answers.id}`, `${answers.email}`, `${answers.officeNumber}`) 
-            Employee.teamArray.push(newManager)
+            teamArray.push(newManager)
+            createRoster()
         })
     } 
 
@@ -105,9 +110,9 @@ function companyCreation() {
         ])
         .then((answers) => {
             const newEngineer = new Engineer(`${answers.engineerName}`, `${answers.id}`, `${answers.email}`, `${answers.github}`) 
-            Employee.teamArray.push(newEngineer)
+            teamArray.push(newEngineer)
+            createRoster()
         })
-        .then(() => createRoster())
     }
 
     function createIntern() {
@@ -141,15 +146,12 @@ function companyCreation() {
     
         .then((answers) => {
             const newIntern = new Intern(`${answers.internName}`, `${answers.id}`, `${answers.email}`, `${answers.school}`) 
-            Employee.teamArray.push(newIntern)
+            teamArray.push(newIntern)
+            createRoster()
         })
-
-        .then(() => createRoster())
     }
 
     createManager()
-    .then(() => createRoster())
-
 }
 function producePage() {
     // The function creating the new HTML page
@@ -157,7 +159,7 @@ function producePage() {
     fs.writeFile('profile.html', fileTemplate, (err) => 
     err ? console.error('HTML file creation has been unsuccessful') : console.log('Your HTML file has successfully been created'))
 
-    // Writing cards in the HTML
+    // Writing cards in the HTML for employee profiles
     for(let i = 0; i < Employee.teamArray.length; i++) {
         let employeeCard = document.createElement('div')
         employeeCard.classList.add('card col-4 bg-primary text-white')
