@@ -3,10 +3,11 @@ const inquirer = require('inquirer')
 const fs = require('fs')
 
 // Allows utilisation of the pages within the lib folder
-const Employee = require('./lib/employee.js')
-const Manager = require('./lib/manager.js')
-const Engineer = require('./lib/engineer.js')
-const Intern = require('./lib/intern.js')
+const Employee = require('./lib/employee')
+const Manager = require('./lib/manager')
+const Engineer = require('./lib/engineer')
+const Intern = require('./lib/intern')
+const HTMLFile = require('./dist/files')
 
 function companyCreation() {
     inquirer
@@ -42,6 +43,12 @@ function companyCreation() {
                 producePage()
             }
         })
+}
+
+function producePage() {
+    const fileTemplate = generateHTML()
+    fs.writeFile('profile.html', fileTemplate, (err) => 
+    err ? console.error('README file creation has been unsuccessful') : console.log('README file has successfully been created'))
 }
 
 companyCreation()
