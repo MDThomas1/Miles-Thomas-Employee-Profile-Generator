@@ -54,8 +54,8 @@ function companyCreation() {
                 name: 'ProfileCreation',
                 message: 'What would you like to do next?',
                 choices: ['Create an engineer', new inquirer.Separator(),
-                 'Create an intern', new inquirer.Separator, 
-                 'Create my webpage', new inquirer.Separator
+                 'Create an intern', new inquirer.Separator(), 
+                 'Create my webpage', new inquirer.Separator()
                 ]
             }
         ])
