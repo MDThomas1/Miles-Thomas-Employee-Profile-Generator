@@ -14,9 +14,6 @@ const teamArray = []
 
 function companyCreation() {
 
-    // Clears the team array at the start of the function
-    teamArray = []
-
     function createManager() {
         // The prompts used to create a manager
         inquirer
@@ -161,7 +158,7 @@ function producePage() {
     err ? console.error('HTML file creation has been unsuccessful') : console.log('Your HTML file has successfully been created'))
 
     // Writing cards in the HTML for employee profiles
-    for(let i = 0; i < Employee.teamArray.length; i++) {
+    for(let i = 0; i < teamArray.length; i++) {
         let employeeCard = document.createElement('div')
         employeeCard.classList.add('card col-4 bg-primary text-white')
         let memberName = document.createElement('h4')
