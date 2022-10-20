@@ -8,6 +8,7 @@ A command line interface used to create a HTML page with small profiles of a cod
 * Usage 
 * Credits
 * License
+* Link to Video
 
 ## Installation
 This is a purely command line application and thus will require downloading the code
@@ -20,3 +21,6 @@ N/A
 
 ## License
 N/A
+
+## Video Demonstration
+https://drive.google.com/file/d/1tx6-EoFnTL4wU-iEyK6WXsRwJjBFjKbX/view
